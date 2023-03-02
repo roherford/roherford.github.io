@@ -6,7 +6,7 @@ body {
     color: white;
 }
 
-input{
+input[type="text"]{
     width:95%;
     border:2px solid #aaa;
     border-radius:7px;
