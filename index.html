@@ -3,34 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=0.5">
     <link rel="stylesheet" href="style.css">
     <title>Abschiebungsformular</title>
 </head>
 <body>
     <center>
-        <h1>Offizielles Abschiebungsformular der ROH</h1>
+        <h2>Offizielles Abschiebungsformular der ROH</h2>
         <div class="form">
             <h3>Allgemeine Informationen</h3>
             <label for="name">Name</label><br>
-            <input type="text" id="name">
+            <input type="text" id="name"><br>
+            <label for="reason">Grund für Abschiebung</label><br>
+            <input type="text" id="reason">
             <br>
             <!--Radio-->
             <form>
-                <h3>Weitere Angaben</h3>
+                <h3>M&uuml;llsorte</h3>
                 <label for="türke">Türke</label>
                 <input type="radio" id="türke" name="nationalität" value="Türke/Türkin"><br>
                 <label for="nigger">Nigger</label>
                 <input type="radio" id="nigga" name="nationalität" value="Nigga"><br>
+                <label for="spanier">Spanier</label>
+                <input type="radio" id="spanier" name="nationalität" value="Spanier"><br>
+                <label for="weillustigist">Weil's lustig ist</label>
+                <input type="radio" id="weillustigist" name="weillustigist" value="weillustigist"><br>
+                <label for="kurde">Kurde</label>
+                <input type="radio" id="kurde" name="kurde" value="kurde">
             </form>
             <br>
+            <label for="color">Hautfarbe</label>
+            <input type="color" id="color">
+            <br>
+            <br>
+            <label for="number">Anzahl</label>
+            <input type="number" id="number">
+            <br><br>
             <input type="checkbox" id="expressabschiebung">
             <label for="expressabschiebung">Expressabschiebung</label>
             <br><br>
-            <script src="script.js"></script>
-            <button id="button">Abschiebung durchführen</button>
+            <button id="redirectToLandPage">Weiter zur Länderauswahl</button>
             <br><br>
         </div>
     </center> 
+
+    <script>
+        document.getElementById("redirectToLandPage").onclick = function () {
+            window.location = "lands.html"
+        }
+    </script>
 </body>
 </html>
