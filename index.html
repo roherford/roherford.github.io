@@ -85,7 +85,7 @@
             var name = document.forms["name"]["lname"].value;
             var reason = document.forms["reason"]["reason_costum"].value;
             var transportmittel = document.forms["transportmittel"]["transportmittel"].value;
-            var anzahl = document.forms["number"]["number"].value;
+            var anzahl = document.forms["number"]["number"];
 
             const nationalForm = document.getElementById("national");
             const nationalFormData = new FormData(nationalForm);
@@ -119,10 +119,10 @@
                     anzahlOnPDF.textContent = anzahl.value
                     if(expressabschiebung.checked) {
                         expressabschiebungOnPDF.textContent = "Ja";
-                        return expressabschiebungOnPDF_time.textContent = "(Es wird eine Wartezeit von " + (Math.floor(Math.random() * 2) + 1) + " Werktagen erwartet.)"
+                        return expressabschiebungOnPDF_time.textContent = "(Es wird eine Wartezeit von " + (Math.floor(Math.random() * 2) + 1) + " Werktage(n) erwartet.)"
                     } else {
                         expressabschiebungOnPDF.textContent = "Nein";
-                        return expressabschiebungOnPDF_time.textContent = "(Es wird eine Wartezeit von " + (Math.floor(Math.random() * 4) + 2) + " Werktagen erwartet.)"
+                        return expressabschiebungOnPDF_time.textContent = "(Es wird eine Wartezeit von " + (Math.floor(Math.random() * 4) + 2) + " Werktage(n) erwartet.)"
                     };
                 });
             };    
