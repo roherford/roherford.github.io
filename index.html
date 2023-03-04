@@ -53,57 +53,33 @@
             <br><br>
             <input type="checkbox" id="expressabschiebung">
             <label for="expressabschiebung">Expressabschiebung</label>
+            <br><br><br>
+            <hr>
             <br><br>
-            <button id="redirectToLandPage">Weiter zur Länderauswahl</button>
-            <br><br>
-        </div>
-    </center> 
-    <script>
-        document.getElementById("redirectToLandPage").onclick = function () {
-            var name = document.forms["name"]["lname"].value;
-            var reason = document.forms["reason"]["reason_costum"].value;
-            var transportmittel = document.forms["transportmittel"]["transportmittel"].value;
-            var anzahl = document.forms["number"]["number"].value;
-
-            const nationalForm = document.getElementById("national");
-            const nationalFormData = new FormData(nationalForm);
-            var national = nationalFormData.get("nationalität");
-
-            if(name == "" || name == null || reason == "" || reason == null || transportmittel == "" || transportmittel == null || national == null || anzahl == "" || anzahl == null)  {
-                alert("Alle Felder müssen ausgefüllt sein!");
-                return false;
-            } else {
-                const landDiv = document.querySelector("#form2_place");
-                landDiv.scrollIntoView({behavior: "smooth", block: "end"});
-            };    
-        }
-    </script>
-    <center class="lands">
-        <h2>Offizielles Abschiebungsformular der ROH</h2>
-        <h3>Schritt 2: Länderauswahl</h3>
-        <div id="form2">
-            <form>
-                <label for="niger">Niger</label>
-                <input type="radio" id="from2" name="niger" value="Niger"><br>
-                <label for="kurdis">(Kurdistan)</label>
-                <input type="radio" id="from2" name="Kurdistan" value="Kurdistan"><br>
-                <label for="Albanien">Albanien</label>
-                <input type="radio" id="Albanfrom2ien" name="Albanien" value="Albanien"><br>
-                <label for="Drop-Off">Drop-Off (hauptsache weg)</label>
-                <input type="radio" id="from2" name="Drop-Off" value="Drop-Off"><br>
-                <label for="kurdis">Grüne Tonne</label>
-                <input type="radio" id="from2" name="GrüneTonne" value="GrüneTonne"><br>
-                <p>oder</p>
-                <label for="Benutzerdefiniert"><b>Benutzerdefiniert</b></label>
-                <input type="text" id="Benutzerdefiniert" name="Benutzerdefiniert"><br>
-            </form>
-            <br><br>
+            <h3>Schritt 2: Länderauswahl</h3>
+            <div id="form2">
+                <form>
+                    <label for="niger">Niger</label>
+                    <input type="radio" id="from2" name="niger" value="Niger"><br>
+                    <label for="kurdis">(Kurdistan)</label>
+                    <input type="radio" id="from2" name="Kurdistan" value="Kurdistan"><br>
+                    <label for="Albanien">Albanien</label>
+                    <input type="radio" id="Albanfrom2ien" name="Albanien" value="Albanien"><br>
+                    <label for="Drop-Off">Drop-Off (hauptsache weg)</label>
+                    <input type="radio" id="from2" name="Drop-Off" value="Drop-Off"><br>
+                    <label for="kurdis">Grüne Tonne</label>
+                    <input type="radio" id="from2" name="GrüneTonne" value="GrüneTonne"><br>
+                    <p>oder</p>
+                    <label for="Benutzerdefiniert"><b>Benutzerdefiniert</b></label>
+                    <input type="text" id="Benutzerdefiniert" name="Benutzerdefiniert"><br>
+                </form>
+                <br><br>
+                <br><br>
+            </div>
             <button id="finishing">Abschiebung durchführen</button>
             <br><br>
         </div>
-    </center>
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    <div id="form2_place">&nbsp;</div>
+    </center> 
     <script>
         document.getElementById("finishing").onclick = function () {
             var name = document.forms["name"]["lname"].value;

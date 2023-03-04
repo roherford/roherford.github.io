@@ -4,7 +4,6 @@ body {
     font-family: 'Poppins', sans-serif;
     background-color: rgb(68,68,68);
     color: white;
-    overflow: hidden;
 }
 
 input[type="text"]{
