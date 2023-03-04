@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <title>Bestätigung Abschiebungsformular</title>
+    </head>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 15px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        .square {
+            background-color: black;
+            width: 25px;
+            height: 25px;
+            border-radius: 5px;
+        }
+
+        button {
+            font-weight: bold;
+            color: white;
+            background-color: rgb(102, 102, 255);
+            border: none;
+            border-radius: 7px;
+            width:95%;
+            height: 50px;
+            transition:.3s;
+            position: fixed;
+            top: 90%;
+            left: 2.5%;
+        }
+
+        button:hover{
+            border-color:rgb(0, 128, 255);
+            box-shadow:0 0 8px 0 dodgerBlue;
+        }
+
+    </style>
+    <body>
+        <div id="body">
+            <h1>Bestätigung der Abschiebung</h1>
+            <hr>
+            <label for="name">Name</label><br>
+            <em id="name">{{Name}}</em><br><br>
+            <label for="transportmittel">Transportmittel</label><br>
+            <em id="transportmittel">{{Transportmittel}}</em><br><br>
+            <label for="begrundung">Begr&uuml;ndung</label><br>
+            <em id="begrundung">{{Begr&uuml;ndung}}</em><br><br>
+            <label for="mullsorte">M&uuml;llsorte</label><br>
+            <em id="mullsorte">{{M&uuml;llsorte}}</em><br><br>
+            <label for="hautfarbe">Hautfarbe</label><br>
+            <div class="square" id="color_square">&nbsp;</div><br>
+            <label for="anzahl">Anzahl</label><br>
+            <em id="anzahl">{{Anzahl}}</em><br><br>
+            <label for="expressabschiebung">Expressabschiebung</label><br>
+            <em id="expressabschiebung">{{Expressabschiebung}}</em>
+            <b><em id="expressabschiebung.time">(Es wird eine Wartezeit von {{x}} Werktagen erwartet.)</em></b>
+        </div>
+
+        <button id="print">Best&auml;tigung ausdrucken</button>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+        <script>
+            document.getElementById("print").onclick = function () {
+                const PDF = document.getElementById("body");
+
+                const opt = 
+                {
+                    margin: 8,
+                    filname: "Abschiebungsformular.pdf",
+                    html2canvas:{scale:2}
+                };
+                html2pdf().set(opt).from(PDF).save();
+            }
+        </script>
+    </body>
+</html>
