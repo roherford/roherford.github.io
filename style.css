@@ -39,3 +39,48 @@ button:hover{
     border-color:rgb(0, 128, 255);
     box-shadow:0 0 8px 0 dodgerBlue;
 }
+
+#notfall {
+    font-weight: bold;
+    color: white;
+    background-color: rgb(255, 61, 61);
+    border: none;
+    border-radius: 7px;
+    width:95%;
+    height: 50px;
+    transition:.3s;
+}
+
+#notfall:hover{
+    border-color:rgb(255, 61, 61);
+    box-shadow:0 0 8px 0 rgb(255, 57, 57);
+}
+
+.material-symbols-outlined {
+    font-variation-settings:
+        'FILL' 0,
+        'wght' 700,
+        'GRAD' 200,
+        'opsz' 48;
+
+    scale: 5;
+    color: orangered;
+}
+
+#scansymbol {
+    scale: 12;
+    color: rgb(255, 255, 255);
+    transition: .3s;
+}
+
+@keyframes searchanim {
+    0% {
+        color: rgb(255, 255, 255);
+    }
+    50% {
+        color: rgb(255, 80, 17);
+    }
+    100% {
+        color: rgb(255, 255, 255);
+    }
+}

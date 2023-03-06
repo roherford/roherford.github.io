@@ -1,131 +1,30 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="DE">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>Startseite - ROH</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <title>Abschiebungsformular</title>
 </head>
 <body>
     <center>
-        <h2>Offizielles Abschiebungsformular der ROH</h2>
-        <div class="form">
-            <h3>Allgemeine Informationen</h3>
-            <form name="name" required>
-                <label for="name">Name</label><br>
-                <input type="text" id="name" name="lname"><br>
-            </form>
-            <!--Reason-->
-            <h3>Andere Angaben</h3>
-            <form id="transportmittel" required>
-                <label for="Benutzerdefiniert">Transportmittel</label>
-                <input type="text" id="transportmittel" name="transportmittel"><br>
-            </form>
-            <form id="reason" required>
-                <label for="reason_costum">Grund für Abschiebung</label><br>
-                <input type="text" id="reason_costum" name="reason_costum">
-            </form>
-            <!--Radio-->
-            <br>
-            <form id="national" required>
-                <h3>M&uuml;llsorte</h3>
-                <label for="türke">Türke</label>
-                <input type="radio" id="türke" name="nationalität" value="Türke"><br>
-                <label for="nigger">Nigger</label>
-                <input type="radio" id="nigga" name="nationalität" value="Nigga"><br>
-                <label for="spanier">Spanier</label>
-                <input type="radio" id="spanier" name="nationalität" value="Spanier"><br>
-                <label for="kurde">Kurde</label>
-                <input type="radio" id="kurde" name="nationalität" value="Kurde">
-            </form>
-            <br>
-            <label for="color">Hautfarbe</label>
-            <input type="color" id="color">
-            <br>
-            <br>
-            <form id="number" required>
-                <label for="number">Anzahl</label>
-                <input type="number" id="number">
-            </form>
-            <br><br>
-            <input type="checkbox" id="expressabschiebung">
-            <label for="expressabschiebung">Expressabschiebung</label>
-            <br><br><br>
-            <hr>
-            <br><br>
-            <h3>Schritt 2: Länderauswahl</h3>
-            <div id="form2">
-                <form>
-                    <label for="niger">Niger</label>
-                    <input type="radio" id="from2" name="niger" value="Niger"><br>
-                    <label for="kurdis">(Kurdistan)</label>
-                    <input type="radio" id="from2" name="Kurdistan" value="Kurdistan"><br>
-                    <label for="Albanien">Albanien</label>
-                    <input type="radio" id="Albanfrom2ien" name="Albanien" value="Albanien"><br>
-                    <label for="Drop-Off">Drop-Off (hauptsache weg)</label>
-                    <input type="radio" id="from2" name="Drop-Off" value="Drop-Off"><br>
-                    <label for="kurdis">Grüne Tonne</label>
-                    <input type="radio" id="from2" name="GrüneTonne" value="GrüneTonne"><br>
-                    <p>oder</p>
-                    <label for="Benutzerdefiniert"><b>Benutzerdefiniert</b></label>
-                    <input type="text" id="Benutzerdefiniert" name="Benutzerdefiniert"><br>
-                </form>
-                <br><br>
-                <br><br>
-            </div>
-            <button id="finishing">Abschiebung durchführen</button>
-            <br><br>
-        </div>
-    </center> 
+        <h1>Willkommen auf der offiziellen Seite der ROH!</h1>
+        <button id="abschiebungsformular">Abschiebungsformular</button><br><br>
+        <button id="notfall" name="notfall">NOTFALLFORMULAR</button><br>
+        <label for="notfall">Nur benutzen, wenn ein absoluter Notfall mit Dringlichkeit besteht!</label><br><br>
+    </center>
     <script>
-        document.getElementById("finishing").onclick = function () {
-            var name = document.forms["name"]["lname"].value;
-            var reason = document.forms["reason"]["reason_costum"].value;
-            var transportmittel = document.forms["transportmittel"]["transportmittel"].value;
-            var anzahl = document.forms["number"]["number"];
+        document.getElementById("abschiebungsformular").onclick = function () { 
+            window.location.href = "./formular.html" 
+        }
 
-            const nationalForm = document.getElementById("national");
-            const nationalFormData = new FormData(nationalForm);
-            var national = nationalFormData.get("nationalität");
+        document.getElementById("zufall").onclick = function () { 
+            window.location.href = "./zufall.html" 
+        }
 
-            if(name == "" || name == null || reason == "" || reason == null || transportmittel == "" || transportmittel == null || national == null || anzahl == "" || anzahl == null)  {
-                alert("Alle Felder müssen ausgefüllt sein!");
-                return false;
-            } else {
-                const color = document.getElementById("color");
-                const expressabschiebung = document.getElementById("expressabschiebung");
-                const anzahl = document.getElementById("number");
-
-                const newPage = window.open("pdf.html")
-
-                newPage.addEventListener("DOMContentLoaded", () => {
-                    const reasonOnPDF = newPage.document.getElementById("begrundung");
-                    const mullsorteOnPDF = newPage.document.getElementById("mullsorte");
-                    const nameOnPDF = newPage.document.getElementById("name");
-                    const transportmittelOnPDF = newPage.document.getElementById("transportmittel");
-                    const hautfarbeOnPDF = newPage.document.getElementById("color_square");
-                    const anzahlOnPDF = newPage.document.getElementById("anzahl");
-                    const expressabschiebungOnPDF = newPage.document.getElementById("expressabschiebung");
-                    const expressabschiebungOnPDF_time = newPage.document.getElementById("expressabschiebung.time");
-
-                    reasonOnPDF.textContent = reason
-                    mullsorteOnPDF.textContent = nationalFormData.get("nationalität").valueOf("nationalität");
-                    nameOnPDF.textContent = name
-                    transportmittelOnPDF.textContent = transportmittel
-                    hautfarbeOnPDF.style.backgroundColor = color.value
-                    anzahlOnPDF.textContent = anzahl.value
-                    if(expressabschiebung.checked) {
-                        expressabschiebungOnPDF.textContent = "Ja";
-                        return expressabschiebungOnPDF_time.textContent = "(Es wird eine Wartezeit von " + (Math.floor(Math.random() * 2) + 1) + " Werktage(n) erwartet.)"
-                    } else {
-                        expressabschiebungOnPDF.textContent = "Nein";
-                        return expressabschiebungOnPDF_time.textContent = "(Es wird eine Wartezeit von " + (Math.floor(Math.random() * 4) + 2) + " Werktage(n) erwartet.)"
-                    };
-                });
-            };    
+        document.getElementById("notfall").onclick = function () { 
+            window.location.href = "./notfall.html" 
         }
     </script>
 </body>

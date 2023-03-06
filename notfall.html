@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notfallformular - ROH</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <center>
+        <br><br>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+        <span class="material-symbols-outlined">emergency_home</span><br><br><br>
+        <b id="header" style="font-size:23px">Notfallabschiebung</b><br>
+        <label for="header">Bitte nur im absolutem Notfall ausf&uuml;hren!</label>
+        <hr>
+        <button id="notfall">Scan ausführen</button><br><br><br><br><br><br><br><br><br>
+        <span class="material-symbols-outlined" id="scansymbol"></span><br><br><br>
+    </center>
+    <script>
+        document.getElementById("notfall").onclick = function () {
+            const scansymbol = document.getElementById("scansymbol");
+
+            scansymbol.textContent = "crisis_alert";
+            scansymbol.style.animation = "searchanim 3s steps(20) 2";
+
+            scansymbol.addEventListener("animationend", () => {
+                scansymbol.textContent = "";
+                alert("Scan wurde abgeschlossen! Die Gegend ist nun bereinigt.");
+            })
+        }
+    </script>
+</body>
+</html>
