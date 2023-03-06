@@ -40,6 +40,13 @@ button:hover{
     box-shadow:0 0 8px 0 dodgerBlue;
 }
 
+.square {
+    background-color: black;
+    width: 25px;
+    height: 25px;
+    border-radius: 5px;
+}
+
 #notfall {
     font-weight: bold;
     color: white;
@@ -58,7 +65,7 @@ button:hover{
 
 .material-symbols-outlined {
     font-variation-settings:
-        'FILL' 0,
+        'FILL' 1,
         'wght' 700,
         'GRAD' 200,
         'opsz' 48;
@@ -82,5 +89,23 @@ button:hover{
     }
     100% {
         color: rgb(255, 255, 255);
+    }
+}
+
+#search {
+    scale: 12;
+    color: rgb(255, 255, 255);
+    transition: .3s;
+}
+
+@keyframes search {
+    0% {
+        opacity: 100%;
+    }
+    50% {
+        opacity: 25%;
+    }
+    100% {
+        opacity: 100%;
     }
 }

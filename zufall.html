@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="DE">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dringleiche Abschiebung - ROH</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <center>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+        <h2>Abschiebungsformular für dringliche Fälle</h2>
+        <div class="form">
+            <h3>Allgemeine Informationen</h3>
+            <form name="name" required>
+                <label for="name">Name</label><br>
+                <input type="text" id="name" name="lname"><br>
+            </form>
+            <button id="random">Restliche Informationen suchen</button><br><br>
+            <hr>
+            <div id="informationen">
+                <b><label for="transportmittel" id="transportmittelLabel">Transportmittel</label><br></b>
+                <em id="transportmittel">keine Suche durchgeführt</em><br><br>
+                <b><label for="begrundung" id="begrundungLabel">Begr&uuml;ndung</label><br></b>
+                <em id="begrundung">keine Suche durchgeführt</em><br><br>
+                <b><label for="mullsorte" id="mullsorteLabel">M&uuml;llsorte</label><br></b>
+                <em id="mullsorte">keine Suche durchgeführt</em><br><br>
+                <label for="hautfarbe" id="hautfarbeLabel">Hautfarbe</label><br></b>
+                <b><div class="square" id="color_square">&nbsp;</div><br>
+                <button id="redirectToPDF">PDF Datei &ouml;ffnen</button>
+            </div>
+            <br><br><br><br><br><span class="material-symbols-outlined" id="search"></span>
+        </div>
+    </center>
+    <script>
+        document.getElementById("redirectToPDF").style.display = "none"
+
+        document.getElementById("random").onclick = function () {
+            document.getElementById("informationen").style.display = "none"
+
+            var name = document.forms["name"]["lname"].value;
+            if(name == "" || name == null)  {
+                alert("Ein Name muss angegeben sein!");
+                return false;
+            } else {
+                const searchincon = document.getElementById("search")
+                searchincon.textContent = "manage_search"
+                searchincon.style.animation = "search 3s steps(50) 2";
+
+                searchincon.addEventListener("animationend", () => {
+                    searchincon.style.display = "none";
+                    document.getElementById("informationen").style.display = "block"
+                    document.getElementById("redirectToPDF").style.display = "block"
+                    
+                    const transportmittel = document.getElementById("transportmittel")
+                    const begrundung = document.getElementById("begrundung")
+                    const mullsorte = document.getElementById("mullsorte")
+                    const hautfarbe = document.getElementById("hautfarbe")
+
+                    var transportmittelWords = ["verrosteter LKW", "Schlauchboot", "Flugzeug", "Schiff", "Zug", "Auto", "Kamel", "Zu Fuß (bringen bis zur Landesgrenze)", "Auto", "Sarg"]
+                    var mullsorteWords = ["Türke", "Nigga", "Spanier", "Kurde", "Homosexueller"]
+                    var transportmittelNum = Math.floor(Math.random() * transportmittelWords.length)
+                    var mullsorteNum = Math.floor(Math.random() * mullsorteWords.length)
+
+                    const randomColor = '#'+(Math.random() * 0xFFFFFF << 0).toString(16).padStart(6, '0');
+
+                    transportmittel.textContent = transportmittelWords[transportmittelNum]
+                    begrundung.textContent = "- Dringliche Abschiebung -"
+                    mullsorte.textContent = mullsorteWords[mullsorteNum]
+                    document.getElementById("color_square").style.backgroundColor = randomColor
+                })
+                document.getElementById("redirectToPDF").onclick = function () {
+                        const newPage = window.open("./pdf.html")
+
+                        newPage.addEventListener("DOMContentLoaded", () => {
+                            const reasonOnPDF = newPage.document.getElementById("begrundung");
+                            const mullsorteOnPDF = newPage.document.getElementById("mullsorte");
+                            const nameOnPDF = newPage.document.getElementById("name");
+                            const transportmittelOnPDF = newPage.document.getElementById("transportmittel");
+                            const hautfarbeOnPDF = newPage.document.getElementById("color_square");
+                            const anzahlOnPDF = newPage.document.getElementById("anzahl");
+                            const expressabschiebungOnPDF = newPage.document.getElementById("expressabschiebung");
+                            const expressabschiebungOnPDF_time = newPage.document.getElementById("expressabschiebung.time");
+
+                            reasonOnPDF.textContent = "- Dringliche Abschiebung -"
+                            mullsorteOnPDF.textContent = mullsorte.textContent
+                            nameOnPDF.textContent = document.forms["name"]["lname"].value;
+                            transportmittelOnPDF.textContent = transportmittel.textContent
+                            hautfarbeOnPDF.style.backgroundColor = document.getElementById("color_square").style.backgroundColor
+                            anzahlOnPDF.textContent = "1"
+                            expressabschiebungOnPDF.textContent = "Ja";
+                            expressabschiebungOnPDF_time.textContent = "(Es wird eine Wartezeit von " + (Math.floor(Math.random() * 2) + 1) + " Werktage(n) erwartet.)"
+            
+                        });
+                    }
+            }
+        }
+    </script>
+</body>
+</html>
