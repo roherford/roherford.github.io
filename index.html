@@ -14,6 +14,7 @@
         <button id="zufall">Dringliche Abschiebung</button><br><br>
         <button id="notfall" name="notfall">NOTFALLFORMULAR</button><br>
         <label for="notfall">Nur benutzen, wenn ein absoluter Notfall mit Dringlichkeit besteht!</label><br><br>
+        <button id="updates">Updates & Ank&uuml;ndigungen</button><br>
     </center>
     <script>
         document.getElementById("abschiebungsformular").onclick = function () { 
@@ -26,6 +27,10 @@
 
         document.getElementById("notfall").onclick = function () { 
             window.location.href = "./notfall.html" 
+        }
+
+        document.getElementById("updates").onclick = function () { 
+            window.location.href = "/updates/index.html" 
         }
     </script>
 </body>

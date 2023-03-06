@@ -58,6 +58,15 @@ button:hover{
     transition:.3s;
 }
 
+#updates {
+    background-color: grey;
+}
+
+#updates:hover{
+    border-color: grey;
+    box-shadow:0 0 8px 0 grey;
+}
+
 #notfall:hover{
     border-color:rgb(255, 61, 61);
     box-shadow:0 0 8px 0 rgb(255, 57, 57);
