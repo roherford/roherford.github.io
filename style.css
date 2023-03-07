@@ -58,6 +58,15 @@ button:hover{
     transition:.3s;
 }
 
+.announcement {
+    background-color: rgb(102, 102, 102);
+    border-radius: 10px;
+    padding: 7px;
+    line-height: 20px;
+    border-color: dodgerblue;
+    border-style: dashed;
+}
+
 #updates {
     background-color: grey;
 }

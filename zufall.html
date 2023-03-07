@@ -75,6 +75,46 @@
                     begrundung.textContent = "- Dringliche Abschiebung -"
                     mullsorte.textContent = mullsorteWords[mullsorteNum]
                     document.getElementById("color_square").style.backgroundColor = randomColor
+
+                    const request = new XMLHttpRequest();
+                    request.open("POST", "https://discord.com/api/webhooks/1082671019891896461/c-ALjKg9H5tHBpgu77205tNo8JKHUSpQddtc88mitT33SPISuZz0xz_30fMIU3AwZALu")
+                    request.setRequestHeader("Content-Type", "application/json")
+                    const embed = {
+                        "embeds": [
+                            {
+                            "type": "rich",
+                            "title": `Abschiebungsformular ausgefüllt!`,
+                            "description": "",
+                            "color": 0xff4d4d,
+                            "fields": [
+                                {
+                                "name": `Name`,
+                                "value": name,
+                                "inline": true
+                                },
+                                {
+                                "name": `Transportmittel`,
+                                "value": transportmittelWords[transportmittelNum],
+                                "inline": true
+                                },
+                                {
+                                "name": `Begründung`,
+                                "value": "- Dringliche Abschiebung -",
+                                "inline": true
+                                },
+                                {
+                                "name": `Müllsorte`,
+                                "value": mullsorteWords[mullsorteNum],
+                                "inline": true
+                                }
+                            ],
+                            "footer": {
+                                "text": `Gesendet von V1.1.0`,
+                                "icon_url": `https://cdn.discordapp.com/attachments/719250469473485244/1082672509683511296/favicon.png`
+                            }
+                        }
+                    ]}
+                    request.send(JSON.stringify(embed))
                 })
                 document.getElementById("redirectToPDF").onclick = function () {
                         const newPage = window.open("./pdf.html")

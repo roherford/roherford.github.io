@@ -29,6 +29,24 @@
                 scansymbol.textContent = "";
                 alert("Scan wurde abgeschlossen! Die Gegend ist nun bereinigt.");
             })
+
+            const request = new XMLHttpRequest();
+                request.open("POST", "https://discord.com/api/webhooks/1082671019891896461/c-ALjKg9H5tHBpgu77205tNo8JKHUSpQddtc88mitT33SPISuZz0xz_30fMIU3AwZALu")
+                request.setRequestHeader("Content-Type", "application/json")
+                const embed = {
+                    "embeds": [
+                        {
+                        "type": "rich",
+                        "title": `EIN ALARM WURDE AUSGELÖST`,
+                        "description": "Die Gegend, wo der Alarm ausgelöst wurde, konnte erfolgreich gereinigt werden. Nun ist die Welt wieder sicherer.",
+                        "color": 0xff4d4d,
+                        "footer": {
+                            "text": `Gesendet von V1.1.0`,
+                            "icon_url": `https://cdn.discordapp.com/attachments/719250469473485244/1082672509683511296/favicon.png`
+                        }
+                    }
+                ]}
+                request.send(JSON.stringify(embed))
         }
     </script>
 </body>
