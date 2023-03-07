@@ -40,13 +40,18 @@
         document.getElementById("random").onclick = function () {
             document.getElementById("informationen").style.display = "none"
 
+            const nichtAbschiebbar = ["Felix", "Lukas", "Tjark", "Tjargo"]
+
             var name = document.forms["name"]["lname"].value;
             if(name == "" || name == null)  {
                 alert("Ein Name muss angegeben sein!");
                 return false;
+            } else if(nichtAbschiebbar.includes(name)) {
+                alert("Die Führungsebene ist nicht abschiebbar");
+                return false;
             } else {
                 const searchincon = document.getElementById("search")
-                searchincon.textContent = "manage_search"
+                searchincon.textContent = "person_search"
                 searchincon.style.animation = "search 3s steps(50) 2";
 
                 searchincon.addEventListener("animationend", () => {
@@ -60,7 +65,7 @@
                     const hautfarbe = document.getElementById("hautfarbe")
 
                     var transportmittelWords = ["verrosteter LKW", "Schlauchboot", "Flugzeug", "Schiff", "Zug", "Auto", "Kamel", "Zu Fuß (bringen bis zur Landesgrenze)", "Auto", "Sarg"]
-                    var mullsorteWords = ["Türke", "Nigga", "Spanier", "Kurde", "Homosexueller"]
+                    var mullsorteWords = ["Türke", "Nigga", "Spanier", "Kurde", "Divers"]
                     var transportmittelNum = Math.floor(Math.random() * transportmittelWords.length)
                     var mullsorteNum = Math.floor(Math.random() * mullsorteWords.length)
 
@@ -91,7 +96,7 @@
                             hautfarbeOnPDF.style.backgroundColor = document.getElementById("color_square").style.backgroundColor
                             anzahlOnPDF.textContent = "1"
                             expressabschiebungOnPDF.textContent = "Ja";
-                            expressabschiebungOnPDF_time.textContent = "(Es wird eine Wartezeit von " + (Math.floor(Math.random() * 2) + 1) + " Werktage(n) erwartet.)"
+                            expressabschiebungOnPDF_time.textContent = "(Es wird eine Wartezeit von 1 Werktag erwartet."
             
                         });
                     }

@@ -40,8 +40,8 @@
                 <input type="radio" id="spanier" name="nationalität" value="Spanier"><br>
                 <label for="kurde">Kurde</label>
                 <input type="radio" id="kurde" name="nationalität" value="Kurde"><br>
-                <label for="kurde">Homosexueller</label>
-                <input type="radio" id="homo" name="nationalität" value="Homosexueller">
+                <label for="kurde">Divers</label>
+                <input type="radio" id="Divers" name="nationalität" value="Divers">
             </form>
             <br>
             <label for="color">Hautfarbe</label>
@@ -89,19 +89,24 @@
             var name = document.forms["name"]["lname"].value;
             var reason = document.forms["reason"]["reason_costum"].value;
             var transportmittel = document.forms["transportmittel"]["transportmittel"].value;
-            var anzahl = document.forms["number"]["number"];
+            var anzahl = document.forms["number"]["number"].value;
 
             const nationalForm = document.getElementById("national");
             const nationalFormData = new FormData(nationalForm);
             var national = nationalFormData.get("nationalität");
 
-            if(name == "" || name == null || reason == "" || reason == null || transportmittel == "" || transportmittel == null || national == null || anzahl == "" || anzahl == null)  {
+            const nichtAbschiebbar = ["Felix", "Lukas", "Tjark", "Tjargo"]
+
+            if(name == "" || name == null || reason == "" || reason == null || transportmittel == "" || transportmittel == null || national == null || anzahl == null)  {
                 alert("Alle Felder müssen ausgefüllt sein!");
+                return false;
+            } else if(nichtAbschiebbar.includes(name)) {
+                alert("Die Führungsebene ist nicht abschiebbar");
                 return false;
             } else {
                 const color = document.getElementById("color");
                 const expressabschiebung = document.getElementById("expressabschiebung");
-                const anzahl = document.getElementById("number");
+                const anzahl = document.forms["number"]["number"].value;
 
                 const newPage = window.open("pdf.html")
 
@@ -120,13 +125,13 @@
                     nameOnPDF.textContent = name
                     transportmittelOnPDF.textContent = transportmittel
                     hautfarbeOnPDF.style.backgroundColor = color.value
-                    anzahlOnPDF.textContent = anzahl.value
+                    anzahlOnPDF.textContent = anzahl
                     if(expressabschiebung.checked) {
                         expressabschiebungOnPDF.textContent = "Ja";
                         return expressabschiebungOnPDF_time.textContent = "(Es wird eine Wartezeit von " + (Math.floor(Math.random() * 2) + 1) + " Werktage(n) erwartet.)"
                     } else {
                         expressabschiebungOnPDF.textContent = "Nein";
-                        return expressabschiebungOnPDF_time.textContent = "(Es wird eine Wartezeit von " + (Math.floor(Math.random() * 4) + 2) + " Werktage(n) erwartet.)"
+                        return expressabschiebungOnPDF_time.textContent = "(Es wird eine Wartezeit von 1 Werktag erwartet."
                     };
                 });
             };    
